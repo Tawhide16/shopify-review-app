@@ -1,0 +1,50 @@
+{% comment %}
+  ReviewFlow Star Rating Badge
+  Displays average star rating and review count near product title/price.
+{% endcomment %}
+
+<div 
+  class="reviewflow-star-badge" 
+  data-product-id="{{ product.id }}"
+  data-shop="{{ shop.permanent_domain }}"
+  role="region"
+  aria-label="Product rating summary"
+>
+  <div class="reviewflow-star-badge-inner" onclick="document.getElementById('reviewflow-widget-section')?.scrollIntoView({ behavior: 'smooth' })">
+    <div class="reviewflow-stars" aria-hidden="true" style="--star-color: {{ block.settings.star_color | default: '#F59E0B' }};">
+      <span class="reviewflow-star-icon">★</span>
+      <span class="reviewflow-star-icon">★</span>
+      <span class="reviewflow-star-icon">★</span>
+      <span class="reviewflow-star-icon">★</span>
+      <span class="reviewflow-star-icon">★</span>
+    </div>
+    <span class="reviewflow-rating-score" data-reviewflow-score>4.9</span>
+    <span class="reviewflow-review-count" data-reviewflow-count>(128 reviews)</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Star Rating Badge",
+  "target": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#F59E0B"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Badge Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    }
+  ]
+}
+{% endschema %}

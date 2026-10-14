@@ -1,0 +1,115 @@
+{% comment %}
+  ReviewFlow Review Submission Form Modal Block
+{% endcomment %}
+
+<div id="reviewflow-modal" class="reviewflow-modal" aria-hidden="true" style="display: none;">
+  <div class="reviewflow-modal-backdrop" onclick="ReviewFlow.closeFormModal()"></div>
+  <div class="reviewflow-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="reviewflow-modal-title">
+    <div class="reviewflow-modal-header">
+      <h3 id="reviewflow-modal-title">Write a Review</h3>
+      <button type="button" class="reviewflow-modal-close" onclick="ReviewFlow.closeFormModal()" aria-label="Close modal">&times;</button>
+    </div>
+
+    <form id="reviewflow-submit-form" onsubmit="ReviewFlow.handleFormSubmit(event)" novalidate>
+      <input type="hidden" name="productId" id="reviewflow-form-productId" value="{{ product.id }}">
+      <input type="hidden" name="shop" id="reviewflow-form-shop" value="{{ shop.permanent_domain }}">
+      <input type="hidden" name="productTitle" id="reviewflow-form-productTitle" value="{{ product.title | escape }}">
+
+      <!-- Star Rating Picker -->
+      <div class="reviewflow-form-group">
+        <label class="reviewflow-form-label">Overall Rating <span class="required">*</span></label>
+        <div class="reviewflow-star-picker" id="reviewflow-star-picker" role="radiogroup">
+          <input type="radio" name="rating" id="star-5" value="5" required>
+          <label for="star-5" title="5 stars">★</label>
+          <input type="radio" name="rating" id="star-4" value="4">
+          <label for="star-4" title="4 stars">★</label>
+          <input type="radio" name="rating" id="star-3" value="3">
+          <label for="star-3" title="3 stars">★</label>
+          <input type="radio" name="rating" id="star-2" value="2">
+          <label for="star-2" title="2 stars">★</label>
+          <input type="radio" name="rating" id="star-1" value="1">
+          <label for="star-1" title="1 star">★</label>
+        </div>
+        <div class="reviewflow-rating-text" id="reviewflow-star-picker-label">Select your rating</div>
+      </div>
+
+      <!-- Headline -->
+      <div class="reviewflow-form-group">
+        <label for="reviewflow-input-title" class="reviewflow-form-label">Review Title <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="reviewflow-input-title" 
+          name="title" 
+          class="reviewflow-input" 
+          placeholder="e.g. Exceeded my expectations!" 
+          required 
+          maxlength="100"
+        >
+      </div>
+
+      <!-- Review Body -->
+      <div class="reviewflow-form-group">
+        <label for="reviewflow-input-body" class="reviewflow-form-label">Review Details <span class="required">*</span></label>
+        <textarea 
+          id="reviewflow-input-body" 
+          name="body" 
+          class="reviewflow-textarea" 
+          rows="4" 
+          placeholder="Share details about the quality, fit, finish, or your overall experience..." 
+          required
+          minlength="10"
+          maxlength="2000"
+        ></textarea>
+        <div class="reviewflow-char-count"><span id="reviewflow-chars">0</span>/2000</div>
+      </div>
+
+      <div class="reviewflow-form-row">
+        <!-- Customer Name -->
+        <div class="reviewflow-form-group">
+          <label for="reviewflow-input-name" class="reviewflow-form-label">Your Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="reviewflow-input-name" 
+            name="customerName" 
+            class="reviewflow-input" 
+            placeholder="e.g. Sarah Jenkins" 
+            required 
+            maxlength="60"
+          >
+        </div>
+
+        <!-- Customer Email -->
+        <div class="reviewflow-form-group">
+          <label for="reviewflow-input-email" class="reviewflow-form-label">Email Address <span class="required">*</span></label>
+          <input 
+            type="email" 
+            id="reviewflow-input-email" 
+            name="customerEmail" 
+            class="reviewflow-input" 
+            placeholder="name@example.com" 
+            required
+          >
+          <span class="reviewflow-helper-text">Used for buyer verification. Never displayed publicly.</span>
+        </div>
+      </div>
+
+      <!-- Security / Anti-Spam Notice -->
+      <div class="reviewflow-security-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        Protected by ReviewFlow Anti-Spam & Verified Buyer Security
+      </div>
+
+      <div id="reviewflow-form-error" class="reviewflow-alert-danger" style="display: none;"></div>
+      <div id="reviewflow-form-success" class="reviewflow-alert-success" style="display: none;"></div>
+
+      <div class="reviewflow-modal-actions">
+        <button type="button" class="reviewflow-btn reviewflow-btn-secondary" onclick="ReviewFlow.closeFormModal()">Cancel</button>
+        <button type="submit" id="reviewflow-submit-btn" class="reviewflow-btn reviewflow-btn-primary">
+          Submit Review
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

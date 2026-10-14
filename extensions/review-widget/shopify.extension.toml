@@ -1,0 +1,17 @@
+name = "ReviewFlow Widget"
+type = "theme"
+
+[blocks.star_rating]
+name = "Product Star Rating"
+target = "head"
+template = "blocks/star_rating.liquid"
+
+[blocks.review_list]
+name = "Product Reviews List"
+target = "section"
+template = "blocks/review_list.liquid"
+
+[blocks.review_form]
+name = "Review Submission Form"
+target = "section"
+template = "blocks/review_form.liquid"

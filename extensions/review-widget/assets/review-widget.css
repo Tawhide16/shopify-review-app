@@ -1,0 +1,608 @@
+/**
+ * ReviewFlow Storefront Widget CSS
+ * Premium, clean, responsive storefront design for Shopify themes.
+ */
+
+:root {
+  --rf-primary: #111827;
+  --rf-primary-hover: #1f2937;
+  --rf-star-color: #f59e0b;
+  --rf-star-empty: #e5e7eb;
+  --rf-text-main: #1f2937;
+  --rf-text-muted: #6b7280;
+  --rf-border: #e5e7eb;
+  --rf-card-bg: #ffffff;
+  --rf-verified-bg: #ecfdf5;
+  --rf-verified-text: #065f46;
+  --rf-reply-bg: #f9fafb;
+  --rf-radius: 12px;
+  --rf-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --rf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Star Rating Badge (Header/Price area) */
+.reviewflow-star-badge {
+  display: inline-flex;
+  margin: 8px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.reviewflow-star-badge-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--rf-text-main);
+  transition: opacity 0.2s ease;
+}
+
+.reviewflow-star-badge-inner:hover {
+  opacity: 0.85;
+}
+
+.reviewflow-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--rf-star-color);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.reviewflow-stars.large {
+  font-size: 24px;
+  gap: 4px;
+}
+
+.reviewflow-rating-score {
+  font-weight: 700;
+  color: var(--rf-text-main);
+}
+
+.reviewflow-review-count {
+  color: var(--rf-text-muted);
+  font-size: 13px;
+}
+
+/* Main Container */
+.reviewflow-container {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--rf-text-main);
+}
+
+/* Summary Header */
+.reviewflow-header {
+  display: grid;
+  grid-template-columns: 240px 1fr 200px;
+  gap: 32px;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--rf-border);
+  border-radius: var(--rf-radius);
+  padding: 28px 32px;
+  box-shadow: var(--rf-shadow-sm);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+  .reviewflow-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.reviewflow-summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+  .reviewflow-summary-card {
+    align-items: center;
+  }
+}
+
+.reviewflow-big-score {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rf-text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.reviewflow-total-text {
+  font-size: 13px;
+  color: var(--rf-text-muted);
+  margin-top: 6px;
+}
+
+/* Histogram / Breakdown */
+.reviewflow-histogram {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.reviewflow-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.reviewflow-bar-label {
+  width: 50px;
+  font-weight: 500;
+  color: var(--rf-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.reviewflow-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--rf-border);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.reviewflow-bar-fill {
+  height: 100%;
+  background: var(--rf-star-color);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.reviewflow-bar-count {
+  width: 32px;
+  text-align: right;
+  color: var(--rf-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Buttons */
+.reviewflow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.reviewflow-btn-primary {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.reviewflow-btn-primary:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+}
+
+.reviewflow-btn-secondary {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+.reviewflow-btn-secondary:hover {
+  background: #f1f5f9;
+}
+
+/* Toolbar (Filters & Sort) */
+.reviewflow-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border: 1px solid var(--rf-border);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reviewflow-filter-group,
+.reviewflow-sort-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--rf-text-muted);
+}
+
+.reviewflow-toolbar select {
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #ffffff;
+  color: var(--rf-text-main);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Reviews Grid/List */
+.reviewflow-reviews-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reviewflow-review-card {
+  background: #ffffff;
+  border: 1px solid var(--rf-border);
+  border-radius: var(--rf-radius);
+  padding: 24px;
+  box-shadow: var(--rf-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.reviewflow-review-card:hover {
+  box-shadow: var(--rf-shadow-md);
+}
+
+.reviewflow-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.reviewflow-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewflow-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.reviewflow-author-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--rf-text-main);
+}
+
+.reviewflow-verified-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: var(--rf-verified-bg);
+  color: var(--rf-verified-text);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.reviewflow-review-date {
+  font-size: 12px;
+  color: var(--rf-text-muted);
+}
+
+.reviewflow-review-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rf-text-main);
+  margin: 8px 0 6px 0;
+}
+
+.reviewflow-review-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+/* Merchant Reply Box */
+.reviewflow-merchant-reply {
+  background: #f8fafc;
+  border-left: 3px solid #3b82f6;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 14px;
+}
+
+.reviewflow-merchant-reply-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #1e3a8a;
+  margin-bottom: 4px;
+}
+
+.reviewflow-merchant-reply-text {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* Card Footer (Helpful button) */
+.reviewflow-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.reviewflow-helpful-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--rf-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.reviewflow-helpful-btn:hover {
+  background: #f8fafc;
+  color: var(--rf-text-main);
+  border-color: #cbd5e1;
+}
+
+.reviewflow-helpful-btn.voted {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
+/* Modal Form Styles */
+.reviewflow-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.reviewflow-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  animation: rfFadeIn 0.2s ease;
+}
+
+.reviewflow-modal-dialog {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 580px;
+  width: 100%;
+  padding: 32px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  z-index: 100000;
+  animation: rfSlideUp 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes rfFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rfSlideUp {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reviewflow-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rf-border);
+}
+
+.reviewflow-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--rf-text-main);
+}
+
+.reviewflow-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.reviewflow-modal-close:hover {
+  color: #1e293b;
+}
+
+/* Star Picker (Interactive rating selection) */
+.reviewflow-star-picker {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.reviewflow-star-picker input {
+  display: none;
+}
+
+.reviewflow-star-picker label {
+  font-size: 32px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.reviewflow-star-picker label:hover,
+.reviewflow-star-picker label:hover ~ label,
+.reviewflow-star-picker input:checked ~ label {
+  color: var(--rf-star-color);
+}
+
+.reviewflow-star-picker label:hover {
+  transform: scale(1.15);
+}
+
+.reviewflow-rating-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--rf-text-muted);
+  margin-top: 2px;
+}
+
+/* Form inputs */
+.reviewflow-form-group {
+  margin-bottom: 18px;
+}
+
+.reviewflow-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 520px) {
+  .reviewflow-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviewflow-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.reviewflow-form-label .required {
+  color: #ef4444;
+}
+
+.reviewflow-input,
+.reviewflow-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--rf-text-main);
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.reviewflow-input:focus,
+.reviewflow-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.reviewflow-helper-text {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+.reviewflow-char-count {
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.reviewflow-security-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 18px;
+  border: 1px dashed #cbd5e1;
+}
+
+.reviewflow-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Alerts */
+.reviewflow-alert-danger {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.reviewflow-alert-success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.reviewflow-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: #ffffff;
+  border: 1px dashed var(--rf-border);
+  border-radius: var(--rf-radius);
+  color: var(--rf-text-muted);
+}
