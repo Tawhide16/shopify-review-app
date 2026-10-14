@@ -1,0 +1,38 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "reviewflow-app-client-id"
+name = "ReviewFlow - Product Reviews"
+handle = "reviewflow-product-reviews"
+application_url = "https://shopify-review-flow.app"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quick-start-store.myshopify.com"
+
+[access_scopes]
+scopes = "read_products,write_products,read_orders,read_themes,write_themes"
+
+[auth]
+redirect_urls = [
+  "https://shopify-review-flow.app/auth/callback",
+  "https://shopify-review-flow.app/auth/shopify/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/api/webhooks/app-uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "products/delete" ]
+  uri = "/api/webhooks/products-delete"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/create" ]
+  uri = "/api/webhooks/orders-create"
+
+[pos]
+embedded = false
