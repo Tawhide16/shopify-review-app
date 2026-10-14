@@ -5,8 +5,9 @@
   "description": "ReviewFlow - Complete Shopify Product Review App with Merchant Admin, Moderation, Theme App Extension and Anti-Spam",
   "type": "module",
   "scripts": {
+    "start": "node app/server/server.js",
     "dev": "node app/server/server.js",
-    "build": "vite build",
+    "build": "prisma generate && prisma db push && vite build",
     "preview": "vite preview",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
