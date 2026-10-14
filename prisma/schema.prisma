@@ -1,0 +1,79 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Shop {
+  id          String   @id @default(uuid())
+  shopDomain  String   @unique
+  accessToken String?
+  isInstalled Boolean  @default(true)
+  plan        String   @default("Free")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  shop        String   @default("quick-start-store.myshopify.com")
+  shopifyId   String   @unique
+  title       String
+  handle      String
+  imageUrl    String
+  price       Float
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id             String    @id @default(uuid())
+  shop           String    @default("quick-start-store.myshopify.com")
+  productId      String
+  productTitle   String
+  productImage   String?
+  customerName   String
+  customerEmail  String
+  rating         Int       // 1 to 5
+  title          String
+  body           String
+  status         String    @default("PENDING") // PENDING, APPROVED, REJECTED
+  verified       Boolean   @default(false)
+  merchantReply  String?
+  merchantRepliedAt DateTime?
+  helpfulCount   Int       @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Settings {
+  id                 String   @id @default(uuid())
+  shop               String   @unique @default("quick-start-store.myshopify.com")
+  enableReviews      Boolean  @default(true)
+  requireApproval    Boolean  @default(true)
+  autoApproveMinStars Int     @default(5)
+  showVerifiedBuyer  Boolean  @default(true)
+  showReviewImages   Boolean  @default(true)
+  allowCustomerName  Boolean  @default(true)
+  allowCustomerEmail Boolean  @default(true)
+  starColor          String   @default("#F59E0B") // Amber / Gold
+  starSize           String   @default("medium")   // small, medium, large
+  reviewLayout       String   @default("list")     // list, grid, compact
+  reviewsPerPage     Int      @default(5)
+  notifyOnNewReview  Boolean  @default(true)
+  merchantEmail      String   @default("merchant@quick-start-store.myshopify.com")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model OrderRecord {
+  id            String   @id @default(uuid())
+  shop          String   @default("quick-start-store.myshopify.com")
+  orderNumber   String
+  customerEmail String
+  productId     String
+  createdAt     DateTime @default(now())
+}
