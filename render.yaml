@@ -3,7 +3,7 @@ services:
     name: reviewflow-shopify-app
     env: node
     plan: free
-    buildCommand: npm install && npm run build && node prisma/seed.js
+    buildCommand: npm install --include=dev && npm run build && node prisma/seed.js
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
